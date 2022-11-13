@@ -32,53 +32,74 @@ namespace tema1 {
 
         void SetViewportArea(const ViewportSpace& viewSpace, glm::vec3 colorColor = glm::vec3(0), bool clear = true);
 
-        // UI and gameplay functions
+        // Increase score
         void IncreaseScore();
 
+        // Caclculate in which direction the duck moves
         void CalculateDuckDirection();
+
+        // Move duck on screen
         void MoveDuck(float deltaTimeSeconds);
-        bool CheckEvasion(float deltaTimeSeconds);
-        void ResetDuckProperties();
 
         // draw duck on screen
-        void DrawCharacter(float deltaTimeSeconds, glm::mat3 visMatrix);
+        void DrawDuck(float deltaTimeSeconds, glm::mat3 visMatrix);
         void RenderDuckMesh(float deltaTimeSeconds, glm::mat3 visMatrix);
-        
-        void ConvertMousePositionToLocalSpace(int mouseX, int MouseY);
 
+        // Check if duck has evaded
+        bool CheckEvasion(float deltaTimeSeconds);
+
+        // Reset variables when a new duck spawns
+        void ResetDuckProperties();
+
+        // Render UI elements
+        void DrawUI();
+        
+        // Convert mouse position in pixels to local space
+        void ConvertMousePositionToLocalSpace(int mouseX, int MouseY);
+        
+        // Shoot duck on screen
         void ShootDuck();
 
 
     protected:
 
+        // score points and score slider(how much the score bar should move)
         int scorePoints;
         float scoreSlider;
+        
+        // no lives and bullets
         int lives;
         int bullets;
 
+        // variable to spawn another duck
         bool spawnDuck;
+        // check if duck is falling
         bool isDuckFalling;
+        // check if duck is evaded
         bool isDuckEvaded;
+        // check how the wings animation should look like
         bool wingsUp;
         int  animationDuration;
 
         std::pair<float, float> duckPosition;
         std::pair<float, float> mousePosition;
 
+        std::pair<float, float> terrainSize;
+
+        // direction the duck moves
         int direction;
+        // how much the duck moves in an unit of time
         float distancePerUnit;
+        // duck speed
         float movementSpeed;
 
+        // max time before duck evades and current time since it spawned
         float maxEvasionTime;
         float currentEvasionTime;
 
+        // logicSpace and viewportSapce structures
         ViewportSpace viewSpace;
         LogicSpace logicSpace;
         glm::mat3 modelMatrix, visMatrix;
-
-        std::pair<float, float> terrainSize;
-
-        Healthbar playerHealth;
-        float healthBarOffset;
     };
 };

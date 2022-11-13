@@ -23,7 +23,6 @@ Mesh* geometry::CreateSquare(const std::string& name, glm::vec3 leftBottomCorner
         square->SetDrawMode(GL_LINE_LOOP);
     }
     else {
-        // Draw 2 triangles. Add the remaining 2 indices
         indices.push_back(0);
         indices.push_back(2);
     }
@@ -49,7 +48,6 @@ Mesh* geometry::CreateTriangle(const std::string& name, glm::vec3 leftBottomCorn
         triangle->SetDrawMode(GL_LINE_LOOP);
     }
     else {
-        // Draw 2 triangles. Add the remaining 2 indices
         indices.push_back(0);
         indices.push_back(2);
     }
@@ -76,7 +74,6 @@ Mesh* geometry::CreateRectangle(const std::string& name, glm::vec3 leftBottomCor
         rectangle->SetDrawMode(GL_LINE_LOOP);
     }
     else {
-        // Draw 2 triangles. Add the remaining 2 indices
         indices.push_back(0);
         indices.push_back(2);
     }
